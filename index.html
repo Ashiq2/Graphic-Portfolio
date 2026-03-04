@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Md. Ashikul Islam - Professional Graphics Designer specializing in Branding, Logo Design, and Visual Storytelling.">
+    <title>Md. Ashikul Islam | Elite Graphics Designer</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #ffb400;
+            --primary-glow: rgba(255, 180, 0, 0.4);
+            --bg-body: #050505;
+            --bg-card: #111111;
+            --bg-nav: rgba(5, 5, 5, 0.9);
+            --text-main: #ffffff;
+            --text-muted: #999999;
+            --border: rgba(255, 255, 255, 0.05);
+            --transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        body.light-mode {
+            --bg-body: #f8f9fa;
+            --bg-card: #ffffff;
+            --bg-nav: rgba(248, 249, 250, 0.9);
+            --text-main: #121212;
+            --text-muted: #666666;
+            --border: rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-body);
+            color: var(--text-main);
+            overflow-x: hidden;
+            width: 100%;
+            line-height: 1.6;
+            transition: background 0.5s ease;
+            opacity: 0;
+            animation: fadeInPage 1s forwards;
+        }
+
+        @keyframes fadeInPage {
+            to { opacity: 1; }
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-body); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        /* --- Floating Social Sidebar --- */
+        .social-sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .social-sidebar a {
+            width: 45px;
+            height: 45px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: var(--transition);
+            transform: translateX(-50px);
+            animation: slideInLeft 0.8s 0.5s forwards;
+        }
+
+        @keyframes slideInLeft {
+            to { transform: translateX(0); }
+        }
+
+        .social-sidebar a:hover {
+            background: var(--primary);
+            color: #000;
+            transform: translateX(10px) scale(1.1);
+            box-shadow: 0 10px 20px var(--primary-glow);
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-nav);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        header.scrolled { padding: 15px 8%; box-shadow: 0 10px 40px rgba(0,0,0,0.4); }
+
+        .logo { 
+            font-size: 1.6rem; 
+            font-weight: 800; 
+            color: var(--primary); 
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav ul li a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            opacity: 0.6;
+            position: relative;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
+        nav ul li a:hover, nav ul li a.active { opacity: 1; color: var(--primary); }
+
+        .header-btns { display: flex; align-items: center; gap: 20px; }
+        .theme-toggle, .menu-btn { cursor: pointer; font-size: 1.3rem; color: var(--text-main); transition: 0.3s; }
+        .theme-toggle:hover { color: var(--primary); transform: rotate(20deg); }
+        .menu-btn { display: none; }
+
+        /* --- Hero Section --- */
+        section { padding: 120px 8% 80px; width: 100%; overflow: hidden; }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            min-height: 80vh;
+        }
+        .hero-text { flex: 1.2; }
+        .hero-text h4 { 
+            color: var(--primary); 
+            font-weight: 700; 
+            letter-spacing: 4px; 
+            text-transform: uppercase; 
+            margin-bottom: 20px; 
+            font-size: 0.9rem;
+            animation: fadeInDown 0.8s 0.2s both;
+        }
+        .hero-text h1 { 
+            font-size: clamp(2.5rem, 6vw, 4.5rem); 
+            line-height: 1.1; 
+            margin-bottom: 30px; 
+            font-weight: 800;
+            animation: fadeInDown 0.8s 0.4s both;
+        }
+        .hero-text span { color: var(--primary); }
+        .hero-text p { 
+            font-size: 1.15rem; 
+            color: var(--text-muted); 
+            margin-bottom: 45px; 
+            max-width: 600px;
+            animation: fadeInDown 0.8s 0.6s both;
+        }
+
+        .hero-img { 
+            flex: 0.8; 
+            display: flex; 
+            justify-content: center; 
+            position: relative;
+            animation: zoomIn 1s 0.2s both;
+        }
+        .img-box {
+            position: relative;
+            width: min(420px, 80vw);
+            aspect-ratio: 1/1;
+            border-radius: 40px;
+            background: var(--bg-card);
+            border: 8px solid var(--primary);
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease-out;
+            will-change: transform;
+        }
+        .img-box img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.5s ease;
+        }
+        .img-box:hover img { transform: scale(1.1); }
+
+        .btn-group { 
+            display: flex; 
+            gap: 20px; 
+            flex-wrap: wrap; 
+            animation: fadeInUp 0.8s 0.8s both;
+        }
+        .btn-main {
+            padding: 18px 40px;
+            background: var(--primary);
+            color: #000;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 15px;
+            display: inline-block;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            text-align: center;
+            box-shadow: 0 10px 30px var(--primary-glow);
+        }
+        .btn-main:hover { 
+            transform: translateY(-8px); 
+            background: transparent; 
+            color: var(--primary);
+            box-shadow: 0 15px 40px var(--primary-glow);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* --- Section Header --- */
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-header h2 { font-size: 3rem; font-weight: 800; margin-bottom: 12px; }
+        .section-header p { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; }
+
+        /* --- Process Cards --- */
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .process-card {
+            background: var(--bg-card);
+            padding: 50px 35px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .process-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, var(--primary-glow), transparent);
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .process-card:hover { transform: translateY(-15px); border-color: var(--primary); }
+        .process-card:hover::before { opacity: 0.1; }
+        .process-card i { font-size: 3rem; color: var(--primary); margin-bottom: 25px; display: block; transition: 0.5s; }
+        .process-card:hover i { transform: scale(1.2) rotate(10deg); }
+
+        /* --- Portfolio --- */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 35px; }
+        .portfolio-item {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: #111;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+        .portfolio-item:hover img { transform: scale(1.15) rotate(2deg); }
+        
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.5s;
+        }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; transform: translateY(0); }
+        .portfolio-overlay h3 { font-size: 1.6rem; margin-bottom: 8px; }
+        .portfolio-overlay p { font-size: 1rem; color: var(--primary); font-weight: 700; letter-spacing: 1px; }
+
+        /* --- Contact Section --- */
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            background: var(--bg-card);
+            padding: 80px;
+            border-radius: 40px;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+        .contact-info h3 { font-size: 2.5rem; margin-bottom: 25px; font-weight: 800; }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: var(--bg-body);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            color: var(--text-main);
+            outline: none;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        .contact-form input:focus { border-color: var(--primary); box-shadow: 0 0 15px var(--primary-glow); }
+
+        /* --- Footer --- */
+        footer { padding: 100px 8% 50px; text-align: center; border-top: 1px solid var(--border); }
+        .footer-socials { display: flex; justify-content: center; gap: 25px; margin-bottom: 40px; }
+        .footer-socials a {
+            width: 60px; height: 60px; background: var(--bg-card); border-radius: 20px;
+            display: flex; align-items: center; justify-content: center; color: var(--text-main);
+            font-size: 1.5rem; transition: var(--transition); border: 1px solid var(--border);
+        }
+        .footer-socials a:hover { 
+            background: var(--primary); 
+            color: #000; 
+            transform: translateY(-10px) rotate(10deg);
+            box-shadow: 0 15px 30px var(--primary-glow);
+        }
+
+        /* --- Mobile Optimization --- */
+        @media (max-width: 1100px) {
+            .social-sidebar { display: none; }
+            header { padding: 20px 5%; }
+            section { padding: 100px 5% 60px; }
+            .hero { flex-direction: column; text-align: center; padding-top: 50px; gap: 50px; }
+            .hero-text { order: 2; }
+            .hero-img { order: 1; }
+            .btn-group { justify-content: center; }
+            .hero-text p { margin-inline: auto; }
+            .contact-wrap { grid-template-columns: 1fr; padding: 50px 30px; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn { display: block; z-index: 1002; }
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                height: 100vh;
+                background: var(--bg-nav);
+                backdrop-filter: blur(30px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+                z-index: 1001;
+                border-left: 1px solid var(--border);
+            }
+            nav ul.active { right: 0; }
+            nav ul li { margin: 25px 0; }
+            nav ul li a { font-size: 1.4rem; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .section-header h2 { font-size: 2.2rem; }
+        }
+
+        /* --- Advanced Reveal --- */
+        .reveal { 
+            opacity: 0; 
+            transform: translateY(50px); 
+            transition: 1s cubic-bezier(0.22, 1, 0.36, 1); 
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        .reveal-left { opacity: 0; transform: translateX(-50px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+
+        .reveal-right { opacity: 0; transform: translateX(50px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+
+    </style>
+</head>
+<body>
+
+<!-- Social Sidebar (Desktop) -->
+<div class="social-sidebar">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://wa.me/01794647014"><i class="fab fa-whatsapp"></i></a>
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#"><i class="fab fa-behance"></i></a>
+</div>
+
+<header id="header">
+    <a href="#" class="logo">ASHIKUL.</a>
+    
+    <div class="header-btns">
+        <nav>
+            <ul id="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#portfolio">Work</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="theme-toggle" id="theme-btn"><i class="fas fa-moon"></i></div>
+        <div class="menu-btn" id="menu-btn"><i class="fas fa-bars-staggered"></i></div>
+    </div>
+</header>
+
+<section id="home">
+    <div class="hero">
+        <div class="hero-text">
+            <h4>ELITE GRAPHICS DESIGNER</h4>
+            <h1>Visualizing Your <span>Creative Future</span></h1>
+            <p>I am Md. Ashikul Islam. I craft high-end brand identities and professional stationary designs that turn standard businesses into iconic brands.</p>
+            <div class="btn-group">
+                <a href="#contact" class="btn-main">Work with Me</a>
+                <a href="tel:01794647014" class="btn-main" style="background:transparent; color:var(--text-main); border-color:var(--border)">
+                    <i class="fas fa-phone"></i> 01794647014
+                </a>
+            </div>
+        </div>
+        <div class="hero-img">
+            <div class="img-box" id="parallax-img">
+                <img src="profile.jpeg" alt="Ashikul Islam" onerror="this.src='https://via.placeholder.com/500x500/ffb400/000000?text=Ashikul+Islam'">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="process">
+    <div class="section-header reveal">
+        <p>Expert Workflow</p>
+        <h2>The Creative Process</h2>
+    </div>
+    <div class="process-grid">
+        <div class="process-card reveal" style="transition-delay: 0.1s;">
+            <i class="fas fa-search-plus"></i>
+            <h3>01. Discovery</h3>
+            <p>In-depth research into your brand values and target audience to build a solid design strategy.</p>
+        </div>
+        <div class="process-card reveal" style="transition-delay: 0.2s;">
+            <i class="fas fa-bezier-curve"></i>
+            <h3>02. Concept</h3>
+            <p>Creating unique sketches and artistic digital concepts tailored specifically for your brand.</p>
+        </div>
+        <div class="process-card reveal" style="transition-delay: 0.3s;">
+            <i class="fas fa-rocket"></i>
+            <h3>03. Launch</h3>
+            <p>Polishing the final design and delivering professional assets ready for your business growth.</p>
+        </div>
+    </div>
+</section>
+
+<section id="portfolio">
+    <div class="section-header reveal">
+        <p>Selected Works</p>
+        <h2>Featured Portfolio</h2>
+    </div>
+    <div class="portfolio-grid">
+        <div class="portfolio-item reveal-left">
+            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80" alt="Branding">
+            <div class="portfolio-overlay">
+                <h3>Elite Branding</h3>
+                <p>Identity Design</p>
+            </div>
+        </div>
+        <div class="portfolio-item reveal">
+            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Digital">
+            <div class="portfolio-overlay">
+                <h3>Vibe Campaign</h3>
+                <p>Digital Marketing</p>
+            </div>
+        </div>
+        <div class="portfolio-item reveal-right">
+            <img src="https://images.unsplash.com/photo-1676282824476-ed6148e7c28a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8U3RhdGlvbmFyeSUyMERlc2lnbnxlbnwwfHwwfHx8MA%3D%3D" alt="Stationary">
+            <div class="portfolio-overlay">
+                <h3>Print Layout</h3>
+                <p>Stationary Design</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="section-header reveal">
+        <p>Get in Touch</p>
+        <h2>Let's Talk Business</h2>
+    </div>
+    <div class="contact-wrap reveal">
+        <div class="contact-info">
+            <h3>Have a project in mind?</h3>
+            <p style="color:var(--text-muted); margin-bottom: 30px;">Available for new freelance opportunities and global branding partnerships.</p>
+            <p style="margin-bottom: 10px;"><b>Email:</b> shompod2@gmail.com</p>
+            <p style="margin-bottom: 10px;"><b>WhatsApp:</b> 01794647014</p>
+            <p><b>Location:</b> Bangladesh</p>
+        </div>
+        <form class="contact-form" id="contactForm">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <textarea rows="4" placeholder="Briefly explain your project..." required></textarea>
+            <button type="submit" class="btn-main" style="width: 100%; border: none; cursor: pointer;">Send Message</button>
+            <p id="msg" style="display:none; color:var(--primary); margin-top:20px; text-align:center; font-weight:800; font-size: 1.1rem;">Message sent successfully!</p>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-socials reveal">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/01794647014"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-behance"></i></a>
+    </div>
+    <p style="font-size: 0.9rem; color: var(--text-muted);">&copy; 2026 Md. Ashikul Islam. All Visual Rights Reserved.</p>
+</footer>
+
+<script>
+    // Theme Switch
+    const themeBtn = document.getElementById('theme-btn');
+    const body = document.body;
+    const themeIcon = themeBtn.querySelector('i');
+
+    if(localStorage.getItem('theme') === 'light') {
+        body.classList.add('light-mode');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    themeBtn.addEventListener('click', () => {
+        body.classList.toggle('light-mode');
+        const isLight = body.classList.contains('light-mode');
+        themeIcon.classList.replace(isLight ? 'fa-moon' : 'fa-sun', isLight ? 'fa-sun' : 'fa-moon');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+
+    // Mobile Menu
+    const menuBtn = document.getElementById('menu-btn');
+    const navLinks = document.getElementById('nav-links');
+
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        menuBtn.querySelector('i').classList.toggle('fa-bars-staggered');
+        menuBtn.querySelector('i').classList.toggle('fa-times');
+    });
+
+    document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            menuBtn.querySelector('i').className = 'fas fa-bars-staggered';
+        });
+    });
+
+    // Parallax Effect for Hero
+    const parallaxImg = document.getElementById('parallax-img');
+    window.addEventListener('mousemove', (e) => {
+        const x = (window.innerWidth / 2 - e.pageX) / 40;
+        const y = (window.innerHeight / 2 - e.pageY) / 40;
+        parallaxImg.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+    });
+
+    // Advanced Reveal Logic
+    const reveal = () => {
+        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        reveals.forEach(el => {
+            const windowHeight = window.innerHeight;
+            const revealTop = el.getBoundingClientRect().top;
+            if(revealTop < windowHeight - 100) {
+                el.classList.add('active');
+            }
+        });
+    };
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+
+    // Header Shrink
+    window.addEventListener('scroll', () => {
+        document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Form Feed
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const msg = document.getElementById('msg');
+        msg.style.display = 'block';
+        e.target.reset();
+        setTimeout(() => { msg.style.display = 'none'; }, 5000);
+    });
+</script>
+
+</body>
+</html>
